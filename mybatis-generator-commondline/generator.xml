@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <classPathEntry location="./ojdbc14.jar" />
+
+  <context id="OracleTables" targetRuntime="MyBatis3">
+
+    <commentGenerator>
+      <property name="suppressAllComments" value="false" />
+      <property name="suppressDate" value="true" />
+    </commentGenerator>
+
+    <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+        connectionURL="jdbc:oracle:thin:@//172.16.50.67:1521/orcl"
+        userId="e_channel"
+        password="e_channel_test">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <!-- 模型 Plain Ordinary Java Object -->
+    <javaModelGenerator targetPackage="cn.zno.pojo" targetProject="./">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+    <!-- sql -->
+    <sqlMapGenerator targetPackage="cn.zno.dao"  targetProject="./">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+    <!-- 调用接口 Data Access Object -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="cn.zno.dao"  targetProject="./">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+    <!-- table+ -->
+    <table schema="" tableName="PERSON" domainObjectName="Person" ></table>
+
+  </context>
+</generatorConfiguration>
